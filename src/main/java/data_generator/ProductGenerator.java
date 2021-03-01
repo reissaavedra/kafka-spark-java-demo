@@ -1,43 +1,43 @@
 package data_generator;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import types.LineItem;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import types.avro.LineItemAvro;
 
 import java.io.File;
 import java.util.Random;
 
 public class ProductGenerator {
-    static final ProductGenerator instance = new ProductGenerator();
-    final Random random;
-    final Random qty;
-    final LineItem[] products;
+    private static final ProductGenerator ourInstance = new ProductGenerator();
+    private final Random random;
+    private final Random qty;
+    private final LineItemAvro[] products;
 
     static ProductGenerator getInstance() {
-        return instance;
+        return ourInstance;
     }
 
     private ProductGenerator() {
-        String DATAFILE = "/home/reisson/IdeaProjects/kafka-java/src/main/resources/data/products.json";
+        String DATAFILE = "src/main/resources/data/products.json";
         ObjectMapper mapper = new ObjectMapper();
         random = new Random();
         qty = new Random();
-        try{
-            products = mapper.readValue(new File(DATAFILE), LineItem[].class);
-        }catch(Exception e){
+        try {
+            products = mapper.readValue(new File(DATAFILE), LineItemAvro[].class);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    private int getIndex(){
-        return random.nextInt();
+    private int getIndex() {
+        return random.nextInt(100);
     }
 
     private int getQuantity() {
         return qty.nextInt(2) + 1;
     }
 
-    LineItem getNextProduct() {
-        LineItem lineItem = products[getIndex()];
+    LineItemAvro getNextProduct() {
+        LineItemAvro lineItem = products[getIndex()];
         lineItem.setItemQty(getQuantity());
         lineItem.setTotalValue(lineItem.getItemPrice() * lineItem.getItemQty());
         return lineItem;

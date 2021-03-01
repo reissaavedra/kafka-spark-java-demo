@@ -1,0 +1,15 @@
+App.class
+serde/JsonDeserializer.class
+types/avro/LineItemAvro$Builder.class
+types/avro/DeliveryAddressAvro.class
+serde/AppSerdes.class
+types/avro/PosInvoiceAvro.class
+AppConfigs.class
+KTableAggDemo.class
+data_generator/ProductGenerator.class
+types/avro/LineItemAvro.class
+types/avro/DeliveryAddressAvro$Builder.class
+data_generator/AddressGenerator.class
+data_generator/PosInvoiceGenerator.class
+types/avro/PosInvoiceAvro$Builder.class
+serde/JsonSerializer.class

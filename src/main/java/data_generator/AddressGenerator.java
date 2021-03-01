@@ -1,39 +1,38 @@
 package data_generator;
 
-import org.codehaus.jackson.map.ObjectMapper;
-import types.DeliveryAddress;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import types.avro.DeliveryAddressAvro;
 
 import java.io.File;
 import java.util.Random;
 
 public class AddressGenerator {
-    static final AddressGenerator instance = new AddressGenerator();
-    final Random random;
-    private DeliveryAddress[] addresses;
+    private static final AddressGenerator ourInstance = new AddressGenerator();
+    private final Random random;
 
+    private DeliveryAddressAvro[] addresses;
 
-    private int getIndex(){
+    private int getIndex() {
         return random.nextInt(100);
     }
 
     static AddressGenerator getInstance() {
-        return instance;
+        return ourInstance;
     }
 
     private AddressGenerator() {
-        final String DATAFILE = "/home/reisson/IdeaProjects/kafka-java/src/main/resources/data/address.json";
+        final String DATAFILE = "src/main/resources/data/address.json";
         final ObjectMapper mapper;
         random = new Random();
         mapper = new ObjectMapper();
-
         try {
-            addresses = mapper.readValue(new File(DATAFILE), DeliveryAddress[].class);
-        }catch(Exception e){
+            addresses = mapper.readValue(new File(DATAFILE), DeliveryAddressAvro[].class);
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    DeliveryAddress getNextAddress(){
+    DeliveryAddressAvro getNextAddress() {
         return addresses[getIndex()];
     }
 }

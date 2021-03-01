@@ -1,0 +1,11 @@
+/home/reisson/IdeaProjects/kafka-java/src/main/java/KafkaStreamDemo.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/KTableAggDemo.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/App.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/AppConfigs.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/ConsumerDemo.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/serde/JsonDeserializer.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/serde/AppSerdes.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/ProducerDemo.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/types/LineItem.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/types/DeliveryAddress.java
+/home/reisson/IdeaProjects/kafka-java/src/main/java/serde/JsonSerializer.java
