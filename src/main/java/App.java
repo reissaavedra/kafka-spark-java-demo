@@ -32,7 +32,7 @@ public class App {
         );
 
         KS0.filter((k, v) ->
-                v.getDeliveryType().equals(AppConfigs.DELIVERY_TYPE_HOME_DELIVERY))
+                v.getDeliveryType().toString().equalsIgnoreCase(AppConfigs.DELIVERY_TYPE_HOME_DELIVERY))
                 .to(AppConfigs.outputTopicName, Produced.with(AppSerdes.String(), AppSerdes.Invoice()));
 
         KafkaStreams streams = new KafkaStreams(streamsBuilder.build(), properties);
